@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-file_path = 'usa_air_traffic.csv'  # Adjust the file path based on where your file is stored
+file_path = 'https://github.com/plotly/datasets/blob/master/2011_february_us_airport_traffic.csv'  # Adjust the file path based on where your file is stored
 flight_data = pd.read_csv(file_path)
 df = pd.DataFrame(flight_data)
 
