@@ -14,8 +14,10 @@ jfk_direct_routes = df[(df['origin'] == 'JFK') & (df['dest'] != 'JFK')][['origin
 # Count the frequency of each destination.
 destination_counts = jfk_direct_routes['dest'].value_counts()
 
-# Display the unique direct routes
-st.subheader('Unique Direct Routes from JFK:')
+jfk_direct_routes_counts['num_flights'] = jfk_direct_routes_counts['dest'].map(destination_counts)
+
+# Display the unique direct routes with the number of flights
+st.subheader('Unique Direct Routes from JFK with Number of Flights:')
 st.write(jfk_direct_routes.drop_duplicates())
 
 # Display the bar chart of direct routes from JFK
