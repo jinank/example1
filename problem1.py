@@ -1,7 +1,6 @@
 import pandas as pd
-import networkx as nx
 import matplotlib.pyplot as plt
-
+import streamlit as st
 
 # Sample dataset of direct flights from JFK
 flight_data = {
@@ -11,41 +10,6 @@ flight_data = {
 }
 
 df = pd.DataFrame(flight_data)
-
-# Create a directed graph
-G = nx.DiGraph()
-
-# Add JFK as the source node
-G.add_node('JFK')
-
-# Add destinations and edges
-for index, row in df.iterrows():
-    G.add_node(row['Destination'])
-    G.add_edge('JFK', row['Destination'])
-
-# Draw the graph
-pos = nx.spring_layout(G)
-nx.draw_networkx(G, pos, with_labels=True, node_color='lightblue', node_size=5000, edge_color='gray')
-plt.show()
-
-import streamlit as st
-import pandas as pd
-import networkx as nx
-import matplotlib.pyplot as plt
-
-# Function to draw the graph
-def draw_graph(df):
-    G = nx.DiGraph()
-    G.add_node('JFK')
-    
-    for index, row in df.iterrows():
-        G.add_node(row['Destination'])
-        G.add_edge('JFK', row['Destination'])
-        
-    pos = nx.spring_layout(G)
-    fig, ax = plt.subplots(figsize=(10, 6))
-    nx.draw_networkx(G, pos, ax=ax, with_labels=True, node_color='lightblue', node_size=5000, edge_color='gray')
-    return fig
 
 # Main app
 def main():
