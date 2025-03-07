@@ -4,7 +4,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 
-file_path = 'flightdata.csv'  # Adjust the file path based on where your file is stored
+file_path = 'flightdata.csv'  
 flight_data = pd.read_csv(file_path)
 df = pd.DataFrame(flight_data)
 
