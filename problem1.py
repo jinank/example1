@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 import streamlit as st
 
 # Sample dataset of direct flights from JFK
@@ -16,8 +16,9 @@ df = pd.DataFrame(flight_data)
 st.write("Direct Flights from JFK:")
 st.write(df)
 
-# Draw graph
-fig = draw_graph(df)
+
+# Create a bar chart
+fig = px.bar(df, x="Destination", y="Airline", title="Direct Flights from JFK:")
 
 # Display the Plotly chart in Streamlit
 st.plotly_chart(fig)    
