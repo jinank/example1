@@ -15,6 +15,8 @@ st.write(df)
 st.write("Direct Flights from JFK:")
 
 # Display the Plotly chart in Streamlit
+fig = px.bar(df, x="dest", y="airline", title=" Flights from JFK")
+
 st.plotly_chart(fig)    
 
 # Find direct routes from JFK
