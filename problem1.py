@@ -5,8 +5,15 @@ import streamlit as st
 file_path = 'usa_air_traffic.csv'  # Adjust the file path based on where your file is stored
 flight_data = pd.read_csv(file_path)
 print(flight_data.head())
-# Load Sample Data
-df = px.data.gapminder()
+
+
+st.title("First")
+df = pd.DataFrame(flight_data)
+
+# Display dataset
+st.write("First")
+st.write(df)
+
 
 # Sample dataset of direct flights from JFK
 flight_data = {
