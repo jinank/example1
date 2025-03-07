@@ -2,6 +2,12 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+file_path = 'usa_air_traffic.csv'  # Adjust the file path based on where your file is stored
+flight_data = pd.read_csv(file_path)
+print(flight_data.head())
+# Load Sample Data
+df = px.data.gapminder()
+
 # Sample dataset of direct flights from JFK
 flight_data = {
     'Destination': ['LAX', 'LHR', 'CDG', 'MIA', 'SFO'],
