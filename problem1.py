@@ -46,4 +46,4 @@ ax.tick_params(axis='x', rotation=45, ha='right')  # Rotate x-axis labels
 plt.tight_layout()
 
 # Display the bar chart
-st.pyplot(fig)
+st.plotly_chart(fig)
