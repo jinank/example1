@@ -18,7 +18,7 @@ jfk_direct_routes_counts['num_flights'] = jfk_direct_routes_counts['dest'].map(d
 
 # Display the unique direct routes with the number of flights
 st.subheader('Unique Direct Routes from JFK with Number of Flights:')
-st.write(jfk_direct_routes.drop_duplicates())
+st.write(jfk_direct_routes_counts)
 
 # Display the bar chart of direct routes from JFK
 st.subheader('Number of Flights to Each Destination from JFK')
