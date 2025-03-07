@@ -11,15 +11,11 @@ df = pd.DataFrame(flight_data)
 # Display dataset
 st.write(df)
 
-df = pd.DataFrame(flight_data)
-
 # Display dataset
 st.write("Direct Flights from JFK:")
-st.write(df)
 
 # Display the Plotly chart in Streamlit
 st.plotly_chart(fig)    
-
 
 # Find direct routes from JFK
 jfk_direct_routes = df[ (df['origin'] == 'JFK') & (df['dest'] != 'JFK') ][['origin', 'dest']]
