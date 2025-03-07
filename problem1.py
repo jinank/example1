@@ -30,13 +30,11 @@ st.write("Unique Direct Routes from JFK:")
 st.write(jfk_direct_routes.drop_duplicates())
 
 # Create the bar chart
-fig, ax = px.subplots(figsize=(12, 6))
 destination_counts.plot(kind='bar', ax=ax, color='skyblue')
 ax.set_title('Direct Routes from JFK')
 ax.set_xlabel('Destination')
 ax.set_ylabel('Number of Flights')
 ax.tick_params(axis='x', rotation=45, ha='right')  # Rotate x-axis labels
-px.tight_layout()
 
 # Display the bar chart
 st.plotly_chart(fig)
