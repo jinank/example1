@@ -15,9 +15,10 @@ df = pd.DataFrame(flight_data)
 st.write("Direct Flights from JFK:")
 st.write(df)
 
+filtered_df = df[df.org == 'JFK']
 
 # Create a bar chart
-fig = px.bar(df, x="dest", y="airline", title="Direct Flights from JFK:")
+fig = px.bar(filtered_df, x="dest", y="airline", title="Direct Flights from JFK:")
 
 # Display the Plotly chart in Streamlit
 st.plotly_chart(fig)    
