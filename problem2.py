@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Load the dataset
 data = pd.read_csv('university_student_dashboard_data.csv')
@@ -47,7 +47,7 @@ def main():
     ax.set_title('Retention Rate Trends')
     ax.set_xlabel('Year')
     ax.set_ylabel('Retention Rate (%)')
-    st.pyplot(fig)
+    st.plotly_chart(fig)
     
     # Plot student satisfaction scores over the years
     st.write("Student Satisfaction Scores Over the Years:")
@@ -57,7 +57,7 @@ def main():
     ax.set_title('Student Satisfaction Trends')
     ax.set_xlabel('Year')
     ax.set_ylabel('Student Satisfaction (%)')
-    st.pyplot(fig)
+    st.plotly_chart(fig)
     
     # Display enrollment breakdown by department
     st.write("Enrollment Breakdown by Department:")
@@ -84,4 +84,4 @@ def main():
     ax.set_xlabel('Year')
     ax.set_ylabel('Enrollment')
     ax.legend()
-    st.pyplot(fig)
+    st.plotly_chart(fig)
