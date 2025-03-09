@@ -70,3 +70,38 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Streamlit App
+def main():
+    st.title("Percentage of Domestic vs. International Flights")
+    st.write("This visualization shows the proportion of domestic and international flights.")
+
+    # Calculate percentages
+    domestic_flights = df[df['flight_type'] == 'Domestic']
+    international_flights = df[df['flight_type'] == 'International']
+    
+    total_flights = len(df)
+    domestic_percentage = (len(domestic_flights) / total_flights) * 100
+    international_percentage = (len(international_flights) / total_flights) * 100
+    
+    # Display percentages
+    st.write(f"Percentage of Domestic Flights: {domestic_percentage:.2f}%")
+    st.write(f"Percentage of International Flights: {international_percentage:.2f}%")
+    
+    # Create a pie chart using Plotly Express
+    pie_data = pd.DataFrame({
+        'Flight Type': ['Domestic', 'International'],
+        'Percentage': [domestic_percentage, international_percentage]
+    })
+    
+    fig = px.pie(pie_data, names='Flight Type', values='Percentage',
+                 title="Domestic vs. International Flights",
+                 color_discrete_sequence=px.colors.sequential.RdBu)
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+
+if __name__ == "__main__":
+    main()
+
+
