@@ -113,18 +113,4 @@ def main():
         
         st.write("\nHubs with more than 5000 connections:")
         st.write(significant_hubs)
-        
-    elif choice == "Most Frequent Airlines from JFK":
-        st.subheader("Most Frequent Airlines Operating from JFK")
-        
-        # Count airline frequencies
-        airline_counts = df['airline'].value_counts().reset_index()
-        airline_counts.columns = ['Airline', 'Number of Flights']
-        
-        # Display the data
-        st.write(airline_counts.head(10))
-        
-        # Bar chart using Plotly Express
-        fig = px.bar(airline_counts.head(10), x='Airline', y='Number of Flights',
-                     title="Most Frequent Airlines from JFK",
-                     color='Number of Flights', color_continuous_scale='Blues')
+     
