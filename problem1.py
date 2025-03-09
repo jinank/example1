@@ -32,6 +32,10 @@ def main():
     st.plotly_chart(fig)
 
 
+if __name__ == "__main__":
+    main()
+
+
 
 # Convert 'dep_time' to datetime if not already done
 df['dep_time'] = pd.to_datetime(df['time_hour'])
@@ -90,6 +94,10 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
     
     # Display the chart in Streamlit
     st.plotly_chart(fig)
+
+if __name__ == "__main__":
+    main()
+
 
 # Streamlit App
 def main():
