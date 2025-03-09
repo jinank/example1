@@ -99,18 +99,4 @@ def main():
                      color_discrete_sequence=px.colors.sequential.RdBu)
         st.plotly_chart(fig)
 
-    elif choice == "Hubs with Significant Traffic Connections":
-        st.subheader("Hubs with Significant Traffic Connections")
-        
-        # Group by destination and count occurrences
-        hub_connections = df.groupby('dest')['origin'].count().sort_values(ascending=False).reset_index()
-        
-        # Display top hubs
-        significant_hubs = hub_connections[hub_connections['origin'] > 5000]
-        
-        st.write("Top Hubs:")
-        st.write(hub_connections.head(10))
-        
-        st.write("\nHubs with more than 5000 connections:")
-        st.write(significant_hubs)
      
