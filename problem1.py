@@ -3,8 +3,7 @@ import plotly.express as px
 import streamlit as st
 import matplotlib.pyplot as plt
 
-
-file_path = 'flightdata.csv'  
+file_path = 'jfk_flight_routes.csv'  
 flight_data = pd.read_csv(file_path)
 df = pd.DataFrame(flight_data)
 
@@ -33,3 +32,8 @@ plt.tight_layout()
 
 # Display the chart in Streamlit
 st.pyplot(plt)
+
+
+
+
+
