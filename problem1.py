@@ -33,3 +33,40 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+# Convert 'dep_time' to datetime if not already done
+df['dep_time'] = pd.to_datetime(df['dep_time'])
+
+# Extract the hour of departure
+df['dep_hour'] = df['dep_time'].dt.hour
+
+# Group by the hour and count the number of flights
+hourly_flight_counts = df.groupby('dep_hour')['origin'].count().reset_index()
+hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
+
+# Streamlit App
+def main():
+    st.title("Flight Volume by Time of Day")
+    st.write("This visualization shows the distribution of flight volume across different hours of the day.")
+
+    # Display the data table
+    st.write("Hourly Flight Volume:")
+    st.dataframe(hourly_flight_counts)
+
+    # Create an interactive line chart using Plotly Express
+    fig = px.line(hourly_flight_counts, x='Hour of the Day', y='Number of Flights',
+                  title="Flight Volume by Time of Day",
+                  labels={'Hour of the Day': 'Hour', 'Number of Flights': 'Number of Flights'},
+                  markers=True)
+    
+    fig.update_layout(xaxis=dict(tickmode='linear', tick0=0, dtick=1),  # Ensure all hours are displayed on x-axis
+                      yaxis_title="Number of Flights",
+                      xaxis_title="Hour of the Day")
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+
+if __name__ == "__main__":
+    main()
