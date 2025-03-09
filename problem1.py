@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Load the dataset (replace 'your_dataset.csv' with your actual file name)
-df = pd.read_csv('your_dataset.csv')
+df = pd.read_csv('jfk_flight_routes.csv')
 
 # Streamlit App
 def main():
