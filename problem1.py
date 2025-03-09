@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
 
 # Convert 'dep_time' to datetime if not already done
-df['dep_time'] = pd.to_datetime(df['dep_time'])
+df['dep_time'] = pd.to_datetime(df['time_hour'])
 
 # Extract the hour of departure
 df['dep_hour'] = df['dep_time'].dt.hour
