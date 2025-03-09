@@ -30,6 +30,9 @@ def main():
     # Display the chart in Streamlit
     st.plotly_chart(fig)
 
+if __name__ == "__main__":
+    main()
+
 
 # Convert 'dep_time' to datetime if not already done
 df['dep_time'] = pd.to_datetime(df['time_hour'])
@@ -41,6 +44,8 @@ df['dep_hour'] = df['dep_time'].dt.hour
 hourly_flight_counts = df.groupby('dep_hour')['origin'].count().reset_index()
 hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
 
+# Streamlit App
+def main():
     st.title("Flight Volume by Time of Day")
     st.write("This visualization shows the distribution of flight volume across different hours of the day.")
 
@@ -61,7 +66,11 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
     # Display the chart in Streamlit
     st.plotly_chart(fig)
 
+if __name__ == "__main__":
+    main()
 
+# Streamlit App
+def main():
     st.title("Percentage of Domestic vs. International Flights")
     st.write("This visualization shows the proportion of domestic and international flights.")
 
@@ -90,8 +99,12 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
     # Display the chart in Streamlit
     st.plotly_chart(fig)
 
+if __name__ == "__main__":
+    main()
 
 
+# Streamlit App
+def main():
     st.title("Hubs with Significant Traffic Connections")
     st.write("This visualization identifies the top hubs based on flight connections.")
 
@@ -117,7 +130,11 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
     # Display the chart in Streamlit
     st.plotly_chart(fig)
 
+if __name__ == "__main__":
+    main()
 
+# Streamlit App
+def main():
     st.title("Most Frequent Airlines Operating from JFK")
     st.write("This visualization identifies the airlines with the highest number of flights from JFK.")
 
@@ -142,4 +159,3 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
 
 if __name__ == "__main__":
     main()
-
