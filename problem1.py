@@ -91,7 +91,35 @@ hourly_flight_counts.columns = ['Hour of the Day', 'Number of Flights']
     # Display the chart in Streamlit
     st.plotly_chart(fig)
 
+# Streamlit App
+def main():
+    st.title("Hubs with Significant Traffic Connections")
+    st.write("This visualization identifies the top hubs based on flight connections.")
+
+    # Group by destination and count occurrences
+    hub_connections = df.groupby('dest')['origin'].count().sort_values(ascending=False).reset_index()
+    hub_connections.columns = ['Destination', 'Number of Connections']
+
+    # Display the top hubs
+    st.write("Top Hubs with Significant Traffic Connections:")
+    st.dataframe(hub_connections.head(10))
+
+    # Identify hubs with more than 5000 connections
+    significant_hubs = hub_connections[hub_connections['Number of Connections'] > 5000]
+    st.write("\nHubs with More Than 5000 Connections:")
+    st.dataframe(significant_hubs)
+
+    # Create a bar chart using Plotly Express
+    fig = px.bar(hub_connections.head(10), x='Destination', y='Number of Connections',
+                 title="Top Hubs by Number of Connections",
+                 labels={'Destination': 'Destination Airport', 'Number of Connections': 'Connections'},
+                 color='Number of Connections', color_continuous_scale='Blues')
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+
 if __name__ == "__main__":
     main()
+
 
 
