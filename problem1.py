@@ -133,3 +133,30 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Streamlit App
+def main():
+    st.title("Most Frequent Airlines Operating from JFK")
+    st.write("This visualization identifies the airlines with the highest number of flights from JFK.")
+
+    # Count the frequency of each airline
+    airline_counts = df['airline'].value_counts().reset_index()
+    airline_counts.columns = ['Airline', 'Number of Flights']
+
+    # Display the most frequent airlines
+    st.write("\nTop 10 Most Frequent Airlines Operating from JFK:")
+    st.dataframe(airline_counts.head(10))
+
+    # Create a bar chart using Plotly Express
+    fig = px.bar(airline_counts.head(10), x='Airline', y='Number of Flights',
+                 title="Most Frequent Airlines from JFK",
+                 labels={'Airline': 'Airline', 'Number of Flights': 'Number of Flights'},
+                 color='Number of Flights', color_continuous_scale='Blues')
+    
+    fig.update_layout(xaxis_tickangle=45)  # Rotate x-axis labels for better readability
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+
+if __name__ == "__main__":
+    main()
+
