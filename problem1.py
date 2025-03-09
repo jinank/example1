@@ -73,30 +73,5 @@ def main():
                       labels={'dep_hour': 'Hour of the Day', 'origin': 'Number of Flights'})
         st.plotly_chart(fig)
 
-    elif choice == "Domestic vs. International Flights":
-        st.subheader("Percentage of Domestic vs. International Flights")
-        
-        # Calculate percentages
-        domestic_flights = df[df['flight_type'] == 'Domestic']
-        international_flights = df[df['flight_type'] == 'International']
-        
-        total_flights = len(df)
-        domestic_percentage = (len(domestic_flights) / total_flights) * 100
-        international_percentage = (len(international_flights) / total_flights) * 100
-        
-        # Display percentages
-        st.write(f"Percentage of Domestic Flights: {domestic_percentage:.2f}%")
-        st.write(f"Percentage of International Flights: {international_percentage:.2f}%")
-        
-        # Pie chart using Plotly Express
-        pie_data = pd.DataFrame({
-            'Flight Type': ['Domestic', 'International'],
-            'Percentage': [domestic_percentage, international_percentage]
-        })
-        
-        fig = px.pie(pie_data, names='Flight Type', values='Percentage',
-                     title="Domestic vs. International Flights",
-                     color_discrete_sequence=px.colors.sequential.RdBu)
-        st.plotly_chart(fig)
 
      
