@@ -1,39 +1,35 @@
+import streamlit as st
 import pandas as pd
 import plotly.express as px
-import streamlit as st
-import matplotlib.pyplot as plt
 
-file_path = 'jfk_flight_routes.csv'  
-flight_data = pd.read_csv(file_path)
-df = pd.DataFrame(flight_data)
+# Load the dataset (replace 'your_dataset.csv' with your actual file name)
+df = pd.read_csv('your_dataset.csv')
 
-# Find direct routes from JFK.
-jfk_direct_routes = df[(df['origin'] == 'JFK') & (df['dest'] != 'JFK')][['origin', 'dest']]
+# Streamlit App
+def main():
+    st.title("Top 5 Flight Destinations from JFK")
+    st.write("This app visualizes the top 5 destinations by number of flights from JFK.")
 
-# Count the frequency of each destination.
-destination_counts = jfk_direct_routes['dest'].value_counts()
-jfk_direct_routes_counts = jfk_direct_routes.drop_duplicates()
-jfk_direct_routes_counts['num_flights'] = jfk_direct_routes_counts['dest'].map(destination_counts)
+    # Calculate the top 5 destinations
+    top_destinations = df['dest'].value_counts().head(5).reset_index()
+    top_destinations.columns = ['Destination', 'Number of Flights']
 
-# Display the unique direct routes with the number of flights
-st.subheader('Unique Direct Routes from JFK with Number of Flights:')
-st.write(jfk_direct_routes_counts)
+    # Display the data
+    st.write("Top 5 Destinations:")
+    st.dataframe(top_destinations)
 
-# Display the bar chart of direct routes from JFK
-st.subheader('Number of Flights to Each Destination from JFK')
+    # Create a bar chart using Plotly Express
+    fig = px.bar(top_destinations, x='Destination', y='Number of Flights', 
+                 title='Top 5 Destinations by Number of Flights',
+                 labels={'Destination': 'Destination Airport', 'Number of Flights': 'Number of Flights'},
+                 color='Number of Flights', color_continuous_scale='Blues')
+    
+    fig.update_layout(xaxis_title="Destination Airport", 
+                      yaxis_title="Number of Flights", 
+                      xaxis_tickangle=45)
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
 
-plt.figure(figsize=(12, 6))  # Adjust figure size as needed
-destination_counts.plot(kind='bar', color='skyblue')
-plt.title('Direct Routes from JFK')
-plt.xlabel('Destination')
-plt.ylabel('Number of Flights')
-plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
-plt.tight_layout()
-
-# Display the chart in Streamlit
-st.pyplot(plt)
-
-
-
-
-
+if __name__ == "__main__":
+    main()
